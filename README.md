@@ -68,4 +68,5 @@ python competition_evaluation.py --pred_path /path/to/predictions --gt_path /pat
 
 ## Reference
 -This work uses the nnUNet framework developed by Isensee et al. [1]. The official repository is available at: [https://github.com/MIC-DKFZ/nnUNet](https://github.com/MIC-DKFZ/nnUNet)
+
 -Wu, Y., Luo, X., Xu, Z., Guo, X., Ju, L., Ge, Z., Liao, W., Cai, J.: Diversified and personalized multi-rater medical image segmentation. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). pp. 11470–11479 (June 2024).
