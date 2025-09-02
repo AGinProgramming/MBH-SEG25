@@ -2,18 +2,22 @@
 ## Summary
 MICCAI - MBHSEG 2025 Multi-class Brain Hemorrhage Segmentation in Non-contrast CT Challenge solution
 
-### Model - nnUNetv2
+### Model
 
-Using the newest nnUNetv2 as the baseline of the model to train on the voxel-level training dataset. 
-   - The input and preprocessing steps follow the nnUNet rules so that the nnUNetv2 model can read and process the data.
-   - The 3d_fullres configuration was selected.
+The newest version of nnUNetv2 is utilized as the baseline model. 
 
-Model can be downloaded by:
-```bash
-git clone git@github.com:MIC-DKFZ/nnUNet.git
-cd nnUNet
-pip install -e .
- ```
+1. **Input:**
+   - NIFTI(.nii.gz) files with the same size.
+   - Annotations from different raters should be noted with their ID instead of being the only ground truth.
+
+2. **Output:**
+   - Multiclass segmentation of the Brain Hemorrhage Segmentation CT images:
+     "background": 0,  
+     "epidural": 1,  
+     "intraparenchymal": 2,  
+     "intraventricular": 3,  
+     "subarachnoid": 4,  
+     "subdural": 5, 
 
 ### Data processing
 
@@ -46,24 +50,31 @@ after install and activate the environment, form the test dataset into the prope
 ```bash
 python /path_to_data_form.py/data_form.py
 ```
-where 'base' and  'out_base' should be replaced by the real path of the raw data and the folder which stored the reformed data in.
+where 'data_root' and  'out_root' should be replaced by the real path of the raw data and the folder which stored the reformed data in.
+The input files should be renamed as:
+```bash
+input_folder/caseid_0000.nii.gz
+```
+The output will be NIFTI(.nii.gz) files formed as:
+```bash
+output_folder/caseid.nii.gz
+```
 
 ### Run prediction
 ```bash
-nnUNet_predict \
-    -i /path/to/raw/data/ \
-    -o /path/to/save_predictions/ \
-    -t 888 \
-    -m 3d_fullres
-    -tr nnUNetTrainerV2  # trainer class used for training
-    -f all  # use all folds for prediction
+python test_inference.py \
+  --model_folder /absolute_path_to_submission/submission/model_inputs/Dataset888_weak/nnUNetTrainer__nnUNetPlans__3d_fullres/fold_all \
+  --input_folder /absolute_path_to_input_files \
+  --output_folder /absolute_path_to_output_files \
+  --folds all \
+  --checkpoint /absolute_path_to_checkpoint_best.pth
+
 ```
-The outcome will be NIFTI(.nii.gz) files.
 
 ### Evaluations
 Simply run:
 ```bash
-python competition_evaluation.py --pred_path /path/to/predictions --gt_path /path/to/annotations
+python competition_evaluation.py --pred_path /path/to/predictions(output files path) --gt_path /path/to/annotations
 ```
 
 ## Reference
