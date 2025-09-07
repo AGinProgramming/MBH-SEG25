@@ -50,13 +50,14 @@ where 'base' and  'out_base' should be replaced by the real path of the raw data
 
 ### Run prediction
 ```bash
-nnUNet_predict \
-    -i /path/to/raw/data/ \
-    -o /path/to/save_predictions/ \
-    -t 888 \
-    -m 3d_fullres
-    -tr nnUNetTrainerV2  # trainer class used for training
-    -f all  # use all folds for prediction
+
+python test_script.py \
+  --model_folder /path_to_model_inputs/model_inputs/Dataset888_weak/nnUNetTrainer__nnUNetPlans__3d_fullres \
+  --input_folder /path/to/reformed/raw \
+  --output_folder /path/to/save_predictions \
+  --folds all \
+  --checkpoint checkpoint_best.pth
+
 ```
 The outcome will be NIFTI(.nii.gz) files.
 
