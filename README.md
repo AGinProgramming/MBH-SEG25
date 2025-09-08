@@ -51,7 +51,7 @@ pip install -e .
 
 ### Download model weights
 Download model weights from:
-https://drive.google.com/drive/folders/1yM6iR6KDjj-VsbuGHAIkv4l0ip2VLUeb?usp=drive_link
+https://drive.google.com/drive/folders/1yM6iR6KDjj-VsbuGHAIkv4l0ip2VLUeb?usp=sharing
 
 ### Run Inference
 after install and activate the environment, form the test dataset into the proper data form
