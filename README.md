@@ -36,10 +36,6 @@ you can use either conda --> environment.yml to create the emvironment
 conda env create -f environment.yml
 conda activate nnunet_env
  ```
-or pip --> requirements.txt to install the requirements
-```bash
-pip install -r requirements.txt
-```
 
 ### Download model structure
 Model can be downloaded by:
@@ -70,12 +66,12 @@ output_folder/caseid.nii.gz
 
 ### Run prediction
 ```bash
-python test_inference.py \
-  --model_folder /absolute_path_to_submission/submission/model_inputs/Dataset888_weak/nnUNetTrainer__nnUNetPlans__3d_fullres/fold_all \
-  --input_folder /absolute_path_to_input_files \
-  --output_folder /absolute_path_to_output_files \
+python test_script.py \
+  --model_folder /absolute_path_to_model_inputs/model_inputs/Dataset888_weak/nnUNetTrainer__nnUNetPlans__3d_fullres \
+  --input_folder /absolute/path/to/reformed/raw \
+  --output_folder /absolute/path/to/save_predictions \
   --folds all \
-  --checkpoint /absolute_path_to_checkpoint_best.pth
+  --checkpoint checkpoint_best.pth
 
 ```
 
