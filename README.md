@@ -41,6 +41,14 @@ or pip --> requirements.txt to install the requirements
 pip install -r requirements.txt
 ```
 
+### Download model structure
+Model can be downloaded by:
+```bash
+git clone git@github.com:MIC-DKFZ/nnUNet.git
+cd nnUNet
+pip install -e .
+ ```
+
 ### Download model weights
 Download model weights from:
 https://drive.google.com/drive/folders/1yM6iR6KDjj-VsbuGHAIkv4l0ip2VLUeb?usp=drive_link
